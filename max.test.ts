@@ -1,6 +1,6 @@
 // max.test.ts
 import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { findMax } from "./max.ts";
+import { findMaxWithMathMax as findMax } from "./max.ts";
 
 Deno.test("findMax should return the maximum for an array of positive numbers", () => {
   assertEquals(findMax([1, 5, 2, 8, 3]), 8);
