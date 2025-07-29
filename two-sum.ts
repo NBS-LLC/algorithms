@@ -13,3 +13,19 @@ export function findTwoSum(nums: number[], target: number): number[] {
 
   return [0, 0];
 }
+
+export function findTwoSumUsingIndex(
+  nums: number[],
+  target: number,
+): number[] {
+  const compMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const comp = target - nums[i];
+    if (compMap.has(comp)) {
+      return [i, compMap.get(comp)];
+    }
+    compMap.set(nums[i], i);
+  }
+
+  return [0, 0];
+}

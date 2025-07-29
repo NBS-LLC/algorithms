@@ -1,7 +1,7 @@
 // two-sum.test.ts
 
 import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { findTwoSum } from "./two-sum.ts";
+import { findTwoSumUsingIndex as findTwoSum } from "./two-sum.ts";
 
 Deno.test("findTwoSum - basic example", () => {
   const nums = [2, 7, 11, 15];
@@ -76,7 +76,7 @@ Deno.test("findTwoSum - values far apart in a larger array", () => {
 });
 
 Deno.test("findTwoSum - multiple identical numbers, distinct indices", () => {
-  const nums = [3, 2, 4, 3];
+  const nums = [3, 2, 5, 3];
   const target = 6;
   const expected = [0, 3];
   assertEquals(findTwoSum(nums, target).sort(), expected.sort());
