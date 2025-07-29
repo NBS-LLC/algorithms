@@ -1,6 +1,5 @@
 // max.bench.ts
-import { findMax } from "./max.ts"; // Your manual loop implementation
-import { findMaxWithMathMax } from "./max.ts"; // The Math.max implementation
+import { findMax, findMaxWithMathMax, findMaxWithReduce } from "./max.ts"; // Your manual loop implementation
 
 // --- Helper function to generate test arrays ---
 function generateRandomArray(size: number): number[] {
@@ -20,8 +19,8 @@ const veryLargeArray = generateRandomArray(500000);
 // --- Benchmarks for Small Array Comparison ---
 Deno.bench({
   name: "findMax (Manual)",
-  group: "Small Array Comparison", // Group for comparing algorithms on small array
-  baseline: true, // Manual loop is the baseline for this group
+  group: "Small Array Comparison",
+  baseline: true,
   fn() {
     findMax(smallArray);
   },
@@ -29,9 +28,17 @@ Deno.bench({
 
 Deno.bench({
   name: "findMax (Math.max)",
-  group: "Small Array Comparison", // Same group as the manual loop for direct comparison
+  group: "Small Array Comparison",
   fn() {
     findMaxWithMathMax(smallArray);
+  },
+});
+
+Deno.bench({
+  name: "findMax (Reduce)", // New benchmark
+  group: "Small Array Comparison",
+  fn() {
+    findMaxWithReduce(smallArray);
   },
 });
 
@@ -53,6 +60,14 @@ Deno.bench({
   },
 });
 
+Deno.bench({
+  name: "findMax (Reduce)", // New benchmark
+  group: "Medium Array Comparison",
+  fn() {
+    findMaxWithReduce(mediumArray);
+  },
+});
+
 // --- Benchmarks for Large Array Comparison ---
 Deno.bench({
   name: "findMax (Manual)",
@@ -68,6 +83,14 @@ Deno.bench({
   group: "Large Array Comparison",
   fn() {
     findMaxWithMathMax(largeArray);
+  },
+});
+
+Deno.bench({
+  name: "findMax (Reduce)", // New benchmark
+  group: "Large Array Comparison",
+  fn() {
+    findMaxWithReduce(largeArray);
   },
 });
 
@@ -89,11 +112,18 @@ Deno.bench({
   },
 });
 
-// Optional: You can still have separate benchmarks for edge cases if you want.
+Deno.bench({
+  name: "findMax (Reduce)", // New benchmark
+  group: "Very Large Array Comparison",
+  fn() {
+    findMaxWithReduce(veryLargeArray);
+  },
+});
+
+// --- Optional: Edge Cases (keep as needed) ---
 Deno.bench({
   name: "findMax (Manual) - Empty Array",
-  group: "Edge Cases",
-  baseline: true, // Only if you want to compare against some other empty array handling.
+  group: "Empty",
   fn() {
     findMax([]);
   },
@@ -101,8 +131,16 @@ Deno.bench({
 
 Deno.bench({
   name: "findMax (Math.max) - Empty Array",
-  group: "Edge Cases",
+  group: "Empty",
   fn() {
     findMaxWithMathMax([]);
+  },
+});
+
+Deno.bench({
+  name: "findMax (Reduce) - Empty Array",
+  group: "Empty",
+  fn() {
+    findMaxWithReduce([]);
   },
 });

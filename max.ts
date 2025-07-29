@@ -16,3 +16,7 @@ export function findMaxWithMathMax(numbers: number[]): number | undefined {
   if (!numbers.length) return undefined;
   return Math.max(...numbers);
 }
+
+export function findMaxWithReduce(numbers: number[]): number | undefined {
+  return numbers.reduce((prev, current) => Math.max(prev, current), numbers[0]);
+}
