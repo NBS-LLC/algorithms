@@ -42,3 +42,31 @@ Deno.test("should handle a single element array", () => {
   assertEquals(k, 1);
   assertEquals(nums.slice(0, k), [10]);
 });
+
+Deno.test("should handle negative numbers and zeros", () => {
+  const nums = [-3, -1, -1, 0, 0, 0, 2, 2, 5];
+  const k = removeDuplicates(nums);
+  assertEquals(k, 5);
+  assertEquals(nums.slice(0, k), [-3, -1, 0, 2, 5]);
+});
+
+Deno.test("should handle duplicates at the beginning and end of the array", () => {
+  const nums = [1, 1, 1, 2, 3, 4, 4, 4];
+  const k = removeDuplicates(nums);
+  assertEquals(k, 4);
+  assertEquals(nums.slice(0, k), [1, 2, 3, 4]);
+});
+
+Deno.test("should handle a larger array with mixed duplicates and unique elements", () => {
+  const nums = [1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 6, 7, 7, 7, 7, 8, 9, 9, 10];
+  const k = removeDuplicates(nums);
+  assertEquals(k, 10);
+  assertEquals(nums.slice(0, k), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+});
+
+Deno.test("should handle an array with only two unique elements, repeated", () => {
+  const nums = [1, 1, 1, 1, 1, 2, 2, 2, 2];
+  const k = removeDuplicates(nums);
+  assertEquals(k, 2);
+  assertEquals(nums.slice(0, k), [1, 2]);
+});
