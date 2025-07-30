@@ -1,4 +1,4 @@
-export function removeDuplicates(nums: number[]): number {
+export function removeDuplicatesInPlace(nums: number[]): number {
   let k = 0;
   let prev: number | undefined = undefined;
 
@@ -11,4 +11,21 @@ export function removeDuplicates(nums: number[]): number {
   }
 
   return k;
+}
+
+export function removeDuplicates(nums: readonly number[]): number[] {
+  if (nums.length === 0) {
+    return [];
+  }
+
+  const result: number[] = [];
+  let prev: number | undefined = undefined;
+
+  for (const num of nums) {
+    if (num !== prev) {
+      result.push(num);
+      prev = num;
+    }
+  }
+  return result;
 }
