@@ -2,14 +2,16 @@
 
 import { findTwoSum, findTwoSumUsingIndex } from "./two-sum.ts";
 
+// Helper function to generate test arrays
 function generateTestInput(size: number): { nums: number[]; target: number } {
   const nums: number[] = [];
   for (let i = 0; i < size; i++) {
     nums.push(Math.floor(Math.random() * 2000000) - 1000000); // Numbers between -1,000,000 and 1,000,000
   }
 
-  const idx1 = 0;
-  const idx2 = Math.floor(size / 2);
+  // Place solution at the end of the array to force O(N^2) to iterate more
+  const idx1 = size - 2; // Second to last element
+  const idx2 = size - 1; // Last element
 
   const val1 = Math.floor(Math.random() * 1000000);
   const val2 = Math.floor(Math.random() * 1000000);
