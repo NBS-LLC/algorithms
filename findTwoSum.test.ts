@@ -1,7 +1,7 @@
 // two-sum.test.ts
 
 import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { findTwoSumUsingIndex as findTwoSum } from "./two-sum.ts";
+import { findTwoSumUsingIndex as findTwoSum } from "./findTwoSum.ts";
 
 Deno.test("findTwoSum - basic example", () => {
   const nums = [2, 7, 11, 15];

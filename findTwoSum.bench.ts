@@ -1,6 +1,6 @@
 // two-sum.bench.ts
 
-import { findTwoSum, findTwoSumUsingIndex } from "./two-sum.ts";
+import { findTwoSum, findTwoSumUsingIndex } from "./findTwoSum.ts";
 
 // Helper function to generate test arrays
 function generateTestInput(size: number): { nums: number[]; target: number } {
